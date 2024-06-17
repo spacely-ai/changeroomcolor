@@ -1,12 +1,9 @@
-"use client";
-
-import { Fullscreen } from "lucide-react";
+"use client";;
 import { useState } from "react";
 import {
   ReactCompareSlider,
   ReactCompareSliderImage,
 } from "react-compare-slider";
-import { Button } from "./ui/button";
 
 type Props = {
   firstImage: string;

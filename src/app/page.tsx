@@ -1,9 +1,8 @@
 "use client";
-
 import { Button } from "@/components/ui/button";
 import CompareSlider from "@/components/compare-slider";
 import { Link } from "@/lib/router-events";
-import { BrickWall, Palette } from "lucide-react";
+import { Download, Loader2, Palette } from "lucide-react";
 import Image from "next/image";
 import { SiteFooter } from "@/components/site-footer";
 import { useState } from "react";
@@ -17,6 +16,10 @@ import {
 } from "@/components/ui/select";
 import { HexColorPicker } from "react-colorful";
 import { Input } from "@/components/ui/input";
+import axios from "axios";
+import { useToast } from "@/components/ui/use-toast";
+import { Switch } from "@/components/ui/switch";
+import { saveAs } from "file-saver";
 
 interface StepIconProps {
   step: number;
@@ -38,6 +41,44 @@ export default function Home() {
   const [imageUrl, setImageUrl] = useState<string>("");
   const [area, setArea] = useState<"wall" | "ceiling" | "floor">("wall");
   const [color, setColor] = useState<string>("#0543F5");
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [resultImageUrl, setResultImageUrl] = useState<string>("");
+  const [isCompare, setIsCompare] = useState<boolean>(true);
+
+  const { toast } = useToast();
+
+  const handleGenerate = async () => {
+    setIsLoading(true);
+
+    try {
+      const res = await axios.post("/api/generate", {
+        imageUrl,
+        area,
+        color,
+      });
+
+      if (res.status === 200) {
+        setResultImageUrl(res.data.imageUrl);
+      } else {
+        console.error("Failed to generate image");
+        toast({
+          title: "Error: Failed to generate image!",
+          description: "Something went wrong, Please try again later.",
+          duration: 1000,
+        });
+      }
+    } catch {
+      console.error("Failed to generate image");
+      toast({
+        title: "Error: Failed to generate image!",
+        description: "Something went wrong, Please try again later.",
+        duration: 1000,
+      });
+    }
+
+    setIsLoading(false);
+  };
 
   return (
     <div className="flex flex-col min-h-dvh">
@@ -68,7 +109,7 @@ export default function Home() {
                   </Button>
                 </div>
               </div>
-              <div className="flex justify-center items-center w-full h-[300px] bg-red-500">
+              <div className="flex justify-center items-center w-full h-[300px]">
                 <CompareSlider
                   firstImage="/landing/example-original.webp"
                   secondImage="/landing/example-result.png"
@@ -128,7 +169,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section id="generate" className="space-y-6 py-36">
+        <section id="generate" className="space-y-6 pt-36">
           <div className="container flex max-w-[80rem] flex-col gap-4 items-center">
             <StepIcon step={1} title="Upload your room image" />
             <ImageUploader value={imageUrl} setValue={setImageUrl} />
@@ -163,10 +204,63 @@ export default function Home() {
               }
             />
             <HexColorPicker color={color} onChange={setColor} />
-            <Button className="w-[300px] mt-12">Generate</Button>
+            <Button
+              disabled={!imageUrl || !area || !color || isLoading}
+              className="w-[300px] mt-12"
+              onClick={handleGenerate}
+            >
+              {isLoading && <Loader2 className="animate-spin w-4 h-4 mr-2" />}
+              Generate
+            </Button>
+            {resultImageUrl && (
+              <div className="w-[500px] flex flex-col items-center justify-center mt-12">
+                <div className="w-full flex justify-between">
+                  <div className="flex gap-2 items-center">
+                    <h3 className="text-lg font-semibold">Result</h3>
+                    <Button
+                      size="sm"
+                      onClick={() => {
+                        saveAs(resultImageUrl, "result.png");
+                      }}
+                    >
+                      <Download className="w-4 h-4 mr-2" />
+                      Download
+                    </Button>
+                  </div>
+                  <div className="flex gap-2 items-center">
+                    <Switch
+                      checked={isCompare}
+                      onCheckedChange={(e) => {
+                        setIsCompare(e);
+                      }}
+                    />
+                    <p>Compare</p>
+                  </div>
+                </div>
+                <div className="relative w-full h-[350px] mt-4 rounded-lg">
+                  {!isCompare && (
+                    <Image
+                      src={resultImageUrl}
+                      alt="Result Image"
+                      fill
+                      style={{
+                        objectFit: "contain",
+                      }}
+                      className="rounded-lg"
+                    />
+                  )}
+                  {isCompare && (
+                    <CompareSlider
+                      firstImage={imageUrl}
+                      secondImage={resultImageUrl}
+                    />
+                  )}
+                </div>
+              </div>
+            )}
           </div>
         </section>
-        <section id="open-source" className="container py-8 md:py-12 lg:py-24">
+        <section id="open-source" className="container py-12">
           <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
             <h2 className="font-heading text-2xl leading-[1.1] sm:text-3xl md:text-6xl">
               Open Source
@@ -179,7 +273,7 @@ export default function Home() {
                 rel="noreferrer"
                 className="underline underline-offset-4"
               >
-                Github
+                Github.
               </Link>
             </p>
           </div>
