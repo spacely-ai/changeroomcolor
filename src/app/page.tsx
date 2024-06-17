@@ -174,7 +174,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section id="generate" className="space-y-6 pt-24 md:pt-36">
+        <section id="generate" className="space-y-6 pt-24 md:pt-28">
           <div className="container flex max-w-[80rem] flex-col gap-6 items-center">
             <StepIcon step={1} title="Upload your room image" />
             <div className="max-w-[500px]">
