@@ -49,6 +49,7 @@ export default function Home() {
   const { toast } = useToast();
 
   const handleGenerate = async () => {
+    setResultImageUrl("");
     setIsLoading(true);
 
     try {
@@ -102,11 +103,15 @@ export default function Home() {
                   Instantly Visualize New Colors in Your Space. In just a few
                   clicks.
                 </p>
-                <div className="flex gap-4 md:gap-1 flex-col md:flex-row mt-8">
-                  <Button className="w-48">Try for free</Button>
-                  <Button variant="outline" className="w-48 ">
-                    View API
-                  </Button>
+                <div className="flex gap-1 md:gap-4 flex-col md:flex-row mt-8">
+                  <Link href="#generate">
+                    <Button className="w-48">Try for free</Button>
+                  </Link>
+                  <Link href="https://enterprise.spacely.ai/" target="_blank">
+                    <Button variant="outline" className="w-48 ">
+                      View API
+                    </Button>
+                  </Link>
                 </div>
               </div>
               <div className="flex justify-center items-center w-full h-[300px]">
@@ -212,7 +217,7 @@ export default function Home() {
               onClick={handleGenerate}
             >
               {isLoading && <Loader2 className="animate-spin w-4 h-4 mr-2" />}
-              Generate
+              Generate (~30 seconds)
             </Button>
             {resultImageUrl && (
               <div className="w-full md:w-[500px] flex flex-col items-center justify-center mt-12">
