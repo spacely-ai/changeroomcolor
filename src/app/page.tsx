@@ -32,7 +32,7 @@ function StepIcon({ step, title }: StepIconProps) {
       <div className="bg-black rounded-full flex justify-center items-center w-8 h-8">
         <p className="text-white font-bold">{step}</p>
       </div>
-      <h3 className="text-xl font-semibold"> {title}</h3>
+      <h3 className="text-lg font-semibold md:text-xl"> {title}</h3>
     </div>
   );
 }
@@ -91,20 +91,20 @@ export default function Home() {
         </Link>
       </header>
       <main className="flex-1">
-        <section id="title" className="space-y-6 pt-36">
+        <section id="title" className="space-y-6 pt-24 md:pt-36">
           <div className="container flex max-w-[80rem] flex-col gap-4">
-            <div className="grid grid-cols-2">
-              <div className="flex flex-col justify-center">
-                <h1 className="font-heading text-4xl font-bold">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
+              <div className="w-full flex flex-col justify-center items-center">
+                <h1 className="font-heading text-3xl md:text-4xl font-bold">
                   changeroomcolor.com
                 </h1>
                 <p className="max-w-[42rem] leading-normal text-muted-foreground">
                   Instantly Visualize New Colors in Your Space. In just a few
                   clicks.
                 </p>
-                <div className="flex gap-4">
-                  <Button className="w-48 mt-8">Try for free</Button>
-                  <Button variant="outline" className="w-48 mt-8">
+                <div className="flex gap-4 md:gap-1 flex-col md:flex-row mt-8">
+                  <Button className="w-48">Try for free</Button>
+                  <Button variant="outline" className="w-48 ">
                     View API
                   </Button>
                 </div>
@@ -118,7 +118,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section id="powered-by" className="space-y-6 pt-48">
+        <section id="powered-by" className="space-y-6 pt-24 md:pt-48">
           <div className="container flex max-w-[80rem] flex-col gap-4 items-center">
             <h2 className="text-heading text-2xl font-bold">Powered By</h2>
             <div className="flex gap-4 w-full justify-evenly h-[100px]">
@@ -169,10 +169,12 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section id="generate" className="space-y-6 pt-36">
-          <div className="container flex max-w-[80rem] flex-col gap-4 items-center">
+        <section id="generate" className="space-y-6 pt-24 md:pt-36">
+          <div className="container flex max-w-[80rem] flex-col gap-6 items-center">
             <StepIcon step={1} title="Upload your room image" />
-            <ImageUploader value={imageUrl} setValue={setImageUrl} />
+            <div className="max-w-[500px]">
+              <ImageUploader value={imageUrl} setValue={setImageUrl} />
+            </div>
             <StepIcon step={2} title="Select area to change the color" />
             <Select
               value={area}
@@ -213,7 +215,7 @@ export default function Home() {
               Generate
             </Button>
             {resultImageUrl && (
-              <div className="w-[500px] flex flex-col items-center justify-center mt-12">
+              <div className="w-full md:w-[500px] flex flex-col items-center justify-center mt-12">
                 <div className="w-full flex justify-between">
                   <div className="flex gap-2 items-center">
                     <h3 className="text-lg font-semibold">Result</h3>
@@ -237,7 +239,7 @@ export default function Home() {
                     <p>Compare</p>
                   </div>
                 </div>
-                <div className="relative w-full h-[350px] mt-4 rounded-lg">
+                <div className="relative w-full h-[250px] md:h-[350px] mt-4 rounded-lg">
                   {!isCompare && (
                     <Image
                       src={resultImageUrl}
@@ -260,7 +262,7 @@ export default function Home() {
             )}
           </div>
         </section>
-        <section id="open-source" className="container py-12">
+        <section id="open-source" className="container pt-24 pb-12">
           <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
             <h2 className="font-heading text-2xl leading-[1.1] sm:text-3xl md:text-6xl">
               Open Source

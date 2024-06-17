@@ -65,13 +65,13 @@ export default function ImageUploader({ value, setValue }: ImageUploaderProps) {
     <div className="flex flex-col items-center gap-2">
       <div className="flex flex-col gap-1">
         {value && (
-          <div className="relative w-[500px] h-[300px] flex justify-center items-center mt-2 rounded-lg">
+          <div className="relative w-[300px] md:w-[500px] h-[200px] md:h-[300px] flex justify-center items-center mt-2 rounded-lg">
             <Image
               src={value}
               alt="uploaded image"
               fill
               style={{
-                objectFit: "cover",
+                objectFit: "contain",
               }}
               className="rounded-lg"
             />
