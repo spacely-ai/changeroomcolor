@@ -10,12 +10,18 @@
   },
   "dependencies": {
     "@badrap/bar-of-progress": "^0.2.2",
+    "@bytescale/upload-widget": "^4.27.0",
+    "@bytescale/upload-widget-react": "^4.19.0",
+    "@emotion/styled": "^11.11.5",
+    "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/react-slot": "^1.0.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.394.0",
     "next": "14.2.4",
     "react": "^18",
+    "react-colorful": "^5.6.1",
+    "react-compare-slider": "^3.1.0",
     "react-dom": "^18",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7"
