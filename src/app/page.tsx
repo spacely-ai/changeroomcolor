@@ -166,6 +166,24 @@ export default function Home() {
             <Button className="w-[300px] mt-12">Generate</Button>
           </div>
         </section>
+        <section id="open-source" className="container py-8 md:py-12 lg:py-24">
+          <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
+            <h2 className="font-heading text-2xl leading-[1.1] sm:text-3xl md:text-6xl">
+              Open Source
+            </h2>
+            <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
+              This project is open source and the code available on{" "}
+              <Link
+                href={"https://discord.gg/6P9kNzjXyj"}
+                target="_blank"
+                rel="noreferrer"
+                className="underline underline-offset-4"
+              >
+                Github
+              </Link>
+            </p>
+          </div>
+        </section>
       </main>
       <SiteFooter />
     </div>
