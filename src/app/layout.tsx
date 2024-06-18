@@ -3,6 +3,8 @@ import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
+import GoogleAnalytics from "./google-analytic";
+import MicrosoftClarity from "./microsoft-clarity";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -27,6 +29,8 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
+        <GoogleAnalytics />
+        <MicrosoftClarity />
         <Toaster />
         {children}
       </body>
