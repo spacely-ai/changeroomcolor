@@ -21,8 +21,8 @@ Follow these steps to set up the project locally.
 
 1. **Clone the Project**
     ```bash
-    git clone https://github.com/your-username/changeroomcolor.com.git
-    cd changeroomcolor.com
+    git clone https://github.com/spacely-ai/changeroomcolor.git
+    cd changeroomcolor
     ```
 
 2. **Install Dependencies**
