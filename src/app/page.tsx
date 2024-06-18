@@ -110,7 +110,7 @@ export default function Home() {
                   Instantly Visualize New Colors in Your Space. In just a few
                   clicks.
                 </p>
-                <div className="flex gap-1 md:gap-4 flex-col md:flex-row mt-8">
+                <div className="flex gap-4 flex-col md:flex-row mt-8">
                   <Link
                     href="#generate"
                     onClick={() => event("click-try-for-free")}
