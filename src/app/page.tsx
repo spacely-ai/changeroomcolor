@@ -315,6 +315,7 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
                 className="underline underline-offset-4"
+                onClick={() => event("click-github")}
               >
                 Github.
               </Link>

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Palette } from "lucide-react";
+import { event } from "@/app/google-analytic";
 export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
   return (
     <footer className={cn(className)}>
@@ -14,6 +15,7 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
               target="_blank"
               rel="noreferrer"
               className="font-medium underline underline-offset-4"
+              onClick={() => event("click-spacely-ai-team")}
             >
               Spacely AI Team
             </a>
@@ -23,6 +25,7 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
               target="_blank"
               rel="noreferrer"
               className="font-medium underline underline-offset-4"
+              onClick={() => event("click-vercel")}
             >
               Vercel
             </a>
