@@ -20,6 +20,7 @@ import axios from "axios";
 import { useToast } from "@/components/ui/use-toast";
 import { Switch } from "@/components/ui/switch";
 import { saveAs } from "file-saver";
+import { event } from "./google-analytic";
 
 interface StepIconProps {
   step: number;
@@ -49,6 +50,12 @@ export default function Home() {
   const { toast } = useToast();
 
   const handleGenerate = async () => {
+    event("click-generate", {
+      imageUrl,
+      area,
+      color,
+    });
+
     setResultImageUrl("");
     setIsLoading(true);
 
@@ -104,12 +111,16 @@ export default function Home() {
                   clicks.
                 </p>
                 <div className="flex gap-1 md:gap-4 flex-col md:flex-row mt-8">
-                  <Link href="#generate">
+                  <Link
+                    href="#generate"
+                    onClick={() => event("click-try-for-free")}
+                  >
                     <Button className="w-48">Try for free</Button>
                   </Link>
                   <Link
                     href="https://docs.enterprise.spacely.ai/spacely-ai-enterprise/product-visualization-api/color-transfer"
                     target="_blank"
+                    onClick={() => event("click-view-api")}
                   >
                     <Button variant="outline" className="w-48 ">
                       View API
@@ -121,6 +132,7 @@ export default function Home() {
                   target="_blank"
                   rel="noreferrer"
                   className="underline underline-offset-4 mt-8"
+                  onClick={() => event("click-contact-us")}
                 >
                   Contact Us
                 </Link>
@@ -249,6 +261,7 @@ export default function Home() {
                     <Button
                       size="sm"
                       onClick={() => {
+                        event("click-download-result");
                         saveAs(resultImageUrl, "result.png");
                       }}
                     >
@@ -260,6 +273,7 @@ export default function Home() {
                     <Switch
                       checked={isCompare}
                       onCheckedChange={(e) => {
+                        event("click-compare");
                         setIsCompare(e);
                       }}
                     />
