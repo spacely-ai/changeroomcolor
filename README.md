@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# changeroomcolor.com
+
+Welcome to **changeroomcolor.com**, an innovative open-source project that allows you to visualize different colors in your room with precision and speed using generative AI. Powered by Spacely AI, this project is built using Next.js and shadcn/ui.
+
+## Features
+
+- **Instant Room Color Changes**: Upload your room image and change wall, floor, or ceiling colors within seconds.
+- **Powered by Spacely AI**: Leverage the power of Spacely AI for precise and realistic color changes.
+- **User-Friendly Interface**: Intuitive and easy-to-use interface built with shadcn/ui.
 
 ## Getting Started
 
-First, run the development server:
+Follow these steps to set up the project locally.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Prerequisites
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Node.js
+- npm
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. **Clone the Project**
+    ```bash
+    git clone https://github.com/spacely-ai/changeroomcolor.git
+    cd changeroomcolor
+    ```
 
-## Learn More
+2. **Install Dependencies**
+    ```bash
+    npm install
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+3. **Set Up Environment Variables**
+    - Copy the `.env.example` file to `.env.local`
+    - Obtain the necessary API keys:
+        - **Upload API Key**: Get your `NEXT_PUBLIC_UPLOAD_API_KEY` from [Bytescale](https://www.bytescale.com) for free usage with limited uploads.
+        - **Spacely API Key**: Register at [Spacely AI](https://enterprise.spacely.ai/) to receive 10 free credits and get your `SPACELY_API_KEY`.
+    - Update the `.env.local` file with the obtained API keys.
+    ```bash
+    cp .env.example .env.local
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **Start the Project**
+    ```bash
+    npm run dev
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Now, you're ready to explore and use the changeroomcolor.com app on your local machine!
 
-## Deploy on Vercel
+## Built With
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Next.js**: The React framework for production.
+- **shadcn/ui**: A component library for building modern UIs.
+- **Spacely AI**: The AI engine behind the precise room color changes.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contributing
+
+We welcome contributions from the community! If you'd like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcome.
+
+## Contact
+
+For any inquiries or support, please contact us at: [jetnipat@spacely.ai](mailto:jetnipat@spacely.ai)
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+---
+
+Built by [Spacely.ai](https://www.spacely.ai/)
+
+Enjoy changing your room colors effortlessly with **changeroomcolor.com**!
