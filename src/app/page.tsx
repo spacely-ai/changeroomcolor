@@ -107,12 +107,23 @@ export default function Home() {
                   <Link href="#generate">
                     <Button className="w-48">Try for free</Button>
                   </Link>
-                  <Link href="https://enterprise.spacely.ai/" target="_blank">
+                  <Link
+                    href="https://docs.enterprise.spacely.ai/spacely-ai-enterprise/product-visualization-api/color-transfer"
+                    target="_blank"
+                  >
                     <Button variant="outline" className="w-48 ">
                       View API
                     </Button>
                   </Link>
                 </div>
+                <Link
+                  href={"https://www.spacely.ai/contact"}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline underline-offset-4 mt-8"
+                >
+                  Contact Us
+                </Link>
               </div>
               <div className="flex justify-center items-center w-full h-[300px]">
                 <CompareSlider
@@ -131,6 +142,17 @@ export default function Home() {
                 <Image
                   src="/logo/spacely-ai-logo.png"
                   alt="Spacely AI Logo"
+                  fill
+                  style={{
+                    objectFit: "contain",
+                  }}
+                  quality={50}
+                />
+              </div>
+              <div className="w-[200px] relative">
+                <Image
+                  src="/logo/bytescale-logo.png"
+                  alt="Next.js Logo"
                   fill
                   style={{
                     objectFit: "contain",
@@ -275,7 +297,7 @@ export default function Home() {
             <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
               This project is open source and the code available on{" "}
               <Link
-                href={"https://discord.gg/6P9kNzjXyj"}
+                href={"https://github.com/spacely-ai/changeroomcolor"}
                 target="_blank"
                 rel="noreferrer"
                 className="underline underline-offset-4"
