@@ -34,7 +34,7 @@ Follow these steps to set up the project locally.
     - Copy the `.env.example` file to `.env.local`
     - Obtain the necessary API keys:
         - **Upload API Key**: Get your `NEXT_PUBLIC_UPLOAD_API_KEY` from [Bytescale](https://www.bytescale.com) for free usage with limited uploads.
-        - **Spacely API Key**: Register at [Spacely AI](https://enterprise.spacely.ai/) to receive 100 free credits and get your `SPACELY_API_KEY`.
+        - **Spacely API Key**: Register at [Spacely AI](https://enterprise.spacely.ai/) to receive 10 free credits and get your `SPACELY_API_KEY`.
     - Update the `.env.local` file with the obtained API keys.
     ```bash
     cp .env.example .env.local
